@@ -1,0 +1,110 @@
+{
+  "hotels":[
+    {
+        "hotelId": "1",
+        "hotelName" : "Secret Point Hotel",
+        "hotelAvailable": true,
+        "city": "Cartagena"
+      },
+      {
+        "hotelId": "2",
+        "hotelName" : "Secret Point Hotel2",
+        "hotelAvailable": true,
+        "city": "Bogota"
+      }
+  ],
+  "rooms": [
+    {
+      "roomId": "1",
+      "description": "Budget Room, 2 Queen Bed (Cityside)",
+      "baseRate": 10,
+      "taxes": 2,
+      "type": "Budget Room",
+      "roomAvailable": "True",
+      "section": "Third Floor - 301",
+      "guesCapacity": 2,
+      "hotelId": "1"
+    },
+    {
+      "roomId": "2",
+      "description": "Budget Room, 1 King Bed (Cityside)",
+      "baseRate": 10,
+      "taxes": 2,
+      "type": "Budget Room",
+      "roomAvailable": "True",
+      "section": "Third Floor - 302",
+      "guesCapacity": 2,
+      "hotelId": "1"
+    },
+    {
+      "roomId": "3",
+      "description": "Budget Room, 1 King Bed (Cityside)",
+      "baseRate": 10,
+      "taxes": 2,
+      "type": "Budget Room",
+      "roomAvailable": "True",
+      "section": "Second Floor - 201",
+      "guesCapacity": 2,
+      "hotelId": "2"
+    },
+    {
+      "roomId": "4",
+      "description": "Budget Room, 2 Queen Bed (Cityside)",
+      "baseRate": 10,
+      "taxes": 2,
+      "type": "Budget Room",
+      "roomAvailable": "True",
+      "section": "Second Floor - 201",
+      "guesCapacity": 2,
+      "hotelId": "2"
+    }
+  ],
+  "booking": [
+    {
+      "bookingId": "1",
+      "starDate": "01-01-2023",
+      "endDate": "10-01-2023",
+      "guesCapacity": 2,
+      "userName": "firstname lastName",
+      "dateBirth": "01-01-1994",
+      "gender": "Female",
+      "docType": "CC",
+      "docNumber": "1234567890",
+      "email": "user1@mail.com",
+      "phoneNumber": "3112345678",
+      "nameEmergencyContact": "firstname lastName",
+      "phoneNumberEmergendyContact": "3112345677",
+      "roomId": "1"
+    },
+    {
+      "bookingId": "1",
+      "starDate": "01-02-2023",
+      "endDate": "10-02-2023",
+      "guesCapacity": 2,
+      "userName": "firstname lastName",
+      "dateBirth": "10-01-1990",
+      "gender": "Female",
+      "docType": "CC",
+      "docNumber": "1234567891",
+      "email": "user2@mail.com",
+      "phoneNumber": "3112345687",
+      "nameEmergencyContact": "firstname lastName",
+      "phoneNumberEmergendyContact": "3112345666",
+      "roomId": "4"
+    }
+  ],
+  "users":[
+      {
+          "userId": 1,
+          "userName": "Usuario 1",
+          "userEmail": "usuario1@example.com",
+          "userPass": "123456"
+        },
+        {
+          "userId": 2,
+          "userName": "Usuario 2",
+          "userEmail": "usuario2@example.com",
+          "userPass": "123456"
+        }
+  ]
+}
