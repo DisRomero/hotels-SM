@@ -1,26 +1,33 @@
 import { useState } from "react";
-import authenticateUser from "../components/back-end/api";
-import {
-    FormControl,
-    FormLabel,
-    Input,
-    Button,
-    Center,
-} from "@chakra-ui/react";
+import authenticateUser from "../back-end/api";
+import AdminRoute from "./AdminRoute";
+import {FormControl,FormLabel,Input,Button, Center,} from "@chakra-ui/react";
+
 
 const Login = () => {
-    const [userEmail, setUseEmail] = useState("");
+    const [userEmail, setUserEmail] = useState("");
     const [userPass, setUserPass] = useState("");
+    const [error, setError] = useState('');
 
     const handleSubmit = () => {
         const user = authenticateUser(userEmail, userPass);
 
         if (user) {
             alert("Inicio de sesión exitoso");
-            console.log("Inicio de sesión exitoso:", user);
+            console.log("Inicio de sesión exitoso:", user.userType);
+            if(user.userType==='Admin'){
+                return (
+                    <AdminRoute user />
+                )
+            }else{
+
+            }
+            // Almacenar login en localStorage
+            localStorage.setItem('sessionData', JSON.stringify(user));
+
         } else {
             alert("Inicio de sesión fallido");
-            console.log("Inicio de sesión fallido");
+            setError('Credenciales incorrectas');
         }
     };
 
@@ -32,7 +39,8 @@ const Login = () => {
                     type="email"
                     placeholder="user@user.com"
                     value={userEmail}
-                    onChange={(e) => setUseEmail(e.target.value)}
+                    onChange={(e) => setUserEmail(e.target.value)}
+                    style={{ borderColor: error ? 'red' : 'initial' }}
                 />
                 <FormLabel>Contraseña</FormLabel>
                 <Input
@@ -40,6 +48,7 @@ const Login = () => {
                     placeholder="Contraseña"
                     value={userPass}
                     onChange={(e) => setUserPass(e.target.value)}
+                    style={{ borderColor: error ? 'red' : 'initial' }}
                 />
                 <Button
                     mt={4}
