@@ -1,12 +1,14 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ user, children }) => {
-
-    if(user.type != "Admin"){
-        return <Navigate to="HotelViajero" />
+const ProtectedRoute = ({
+    shouldRedirect = false,
+    redirectPath = "/login",
+    children,
+}) => {
+    if (shouldRedirect) {
+        return children;
     }
+    return <Navigate to={redirectPath} replace={true} />;
+};
 
-  return children ? children : <Outlet/>
-}
-
-export default ProtectedRoute
+export default ProtectedRoute;

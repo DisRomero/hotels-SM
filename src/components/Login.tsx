@@ -1,33 +1,39 @@
-import { useState } from "react";
-import authenticateUser from "../back-end/api";
-import AdminRoute from "./AdminRoute";
-import {FormControl,FormLabel,Input,Button, Center,} from "@chakra-ui/react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext";
 
+import { authenticateUser } from "../api/userAuth";
+import {
+    FormControl,
+    FormLabel,
+    Input,
+    Button,
+    Center,
+} from "@chakra-ui/react";
 
 const Login = () => {
+    const Auth = useContext(AuthContext);
     const [userEmail, setUserEmail] = useState("");
     const [userPass, setUserPass] = useState("");
-    const [error, setError] = useState('');
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = () => {
         const user = authenticateUser(userEmail, userPass);
 
         if (user) {
-            alert("Inicio de sesión exitoso");
             console.log("Inicio de sesión exitoso:", user.userType);
-            if(user.userType==='Admin'){
-                return (
-                    <AdminRoute user />
-                )
-            }else{
-
+            Auth.setCurrentSession(user);
+            console.log(user);
+            if (user.userType === "user") {
+                return navigate("/user");
             }
-            // Almacenar login en localStorage
-            localStorage.setItem('sessionData', JSON.stringify(user));
-
+            if (user.userType === "admin") {
+                return navigate("/admin");
+            }
         } else {
             alert("Inicio de sesión fallido");
-            setError('Credenciales incorrectas');
+            setError("Credenciales incorrectas");
         }
     };
 
@@ -40,7 +46,7 @@ const Login = () => {
                     placeholder="user@user.com"
                     value={userEmail}
                     onChange={(e) => setUserEmail(e.target.value)}
-                    style={{ borderColor: error ? 'red' : 'initial' }}
+                    style={{ borderColor: error ? "red" : "initial" }}
                 />
                 <FormLabel>Contraseña</FormLabel>
                 <Input
@@ -48,7 +54,7 @@ const Login = () => {
                     placeholder="Contraseña"
                     value={userPass}
                     onChange={(e) => setUserPass(e.target.value)}
-                    style={{ borderColor: error ? 'red' : 'initial' }}
+                    style={{ borderColor: error ? "red" : "initial" }}
                 />
                 <Button
                     mt={4}
