@@ -9,6 +9,11 @@ export const getHotelsById = (db, hotelId: string) => {
     return hotel ? hotel : undefined;
 };
 
+export const getRooms = (db) => {
+    const rooms = db.rooms;
+    return rooms;
+};
+
 export const getRoomsByHotelId = (db, hotelId: string) => {
     const rooms = db.rooms.filter((r) => r.hotelId === hotelId);
 

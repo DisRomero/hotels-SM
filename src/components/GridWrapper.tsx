@@ -13,7 +13,6 @@ function GridWrapper({ children }) {
             }}
             gridTemplateRows={"50px 1fr 30px"}
             gridTemplateColumns={"150px 1fr"}
-            h="100vh"
             w="100vw"
             gap="1"
             fontWeight="bold"

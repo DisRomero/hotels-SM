@@ -20,6 +20,7 @@ const HotelAdmin = () => {
             <Grid>
                 <GridItem>
                     <Center>
+                        <Text>Lista de hoteles</Text>
                         <Text>Admin view</Text>
                     </Center>
                 </GridItem>
@@ -35,9 +36,10 @@ const HotelAdmin = () => {
                 <GridItem>
                     {hotels.map((hotel, i: number) => (
                         <InfoBox
-                            key={i}
-                            title={hotel.hotelName}
-                            rooms={getRoomsByHotelId(db, hotel.hotelId)}
+                        key={i}
+                        id={hotel.hotelId}
+                        title={hotel.hotelName}
+                        rooms={getRoomsByHotelId(db, hotel.hotelId)}
                         />
                     ))}
                 </GridItem>

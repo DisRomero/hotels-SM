@@ -22,9 +22,7 @@ const Login = () => {
         const user = authenticateUser(userEmail, userPass);
 
         if (user) {
-            console.log("Inicio de sesión exitoso:", user.userType);
             Auth.setCurrentSession(user);
-            console.log(user);
             if (user.userType === "user") {
                 return navigate("/user");
             }

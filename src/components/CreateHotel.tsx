@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 
 import { getHotels } from "../api/db";
 import { DbContext } from "../AuthContext";
-
 import GridWrapper from "./GridWrapper";
-import { useNavigate } from "react-router-dom";
+
 
 const CreateHotel = () => {
     const { db, setDb } = useContext(DbContext);
@@ -23,6 +23,7 @@ const CreateHotel = () => {
             city: cityName,
             rooms: [],
         };
+
         const newDb = structuredClone(db);
         newDb.hotels.push(newHotel);
         setDb(newDb);

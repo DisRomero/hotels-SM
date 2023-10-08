@@ -19,3 +19,7 @@ export const getUserFromLS = () => {
 export const removeUserSessionFromLS = () => {
     localStorage.removeItem("userSession");
 };
+
+export const storeHotelIDInLS = (hotelId) => {
+    localStorage.setItem("hotelInfo", JSON.stringify(hotelId));
+};

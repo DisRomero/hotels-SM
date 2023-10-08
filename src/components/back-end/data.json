@@ -3,7 +3,7 @@
     {
         "hotelId": "1",
         "hotelName" : "Secret Point Hotel",
-        "hotelAvailable": true,
+        "hotelAvailable": false,
         "city": "Cartagena",
         "rooms": ["1", "2"]
       },

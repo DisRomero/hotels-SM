@@ -8,10 +8,11 @@ import HotelUser from "./components/HotelUser";
 import Booking from "./components/Booking";
 import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
+import CreateHotel from "./components/CreateHotel";
+import EditHotel from "./components/EditHotel";
 
 import { AuthContext, DbContext } from "./AuthContext";
-import CreateHotel from "./components/CreateHotel";
-import { getUserFromLS, storeUserInLS } from "./api/userAuth";
+import { getUserFromLS, storeUserInLS, storeHotelIDInLS } from "./api/userAuth";
 import data from "./components/back-end/data.json";
 
 function App() {
@@ -25,9 +26,13 @@ function App() {
         storeUserInLS(user);
     };
 
+    const setCurrentHoteSession = (hotel) => {
+        storeHotelIDInLS(hotel);
+    };
+
     return (
         <AuthContext.Provider value={{ currentUser, setCurrentSession }}>
-            <DbContext.Provider value={{ db, setDb }}>
+            <DbContext.Provider value={{ db, setDb, setCurrentHoteSession }}>
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Login />} />
@@ -63,6 +68,7 @@ function App() {
                             }
                         />
                         <Route path="create-hotel" element={<CreateHotel />} />
+                        <Route path="edit-hotel" element={<EditHotel />} />
                     </Routes>
                 </BrowserRouter>
             </DbContext.Provider>
