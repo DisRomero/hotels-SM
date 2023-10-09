@@ -1,8 +1,37 @@
-import { Text, Box, Checkbox, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+//@vendors
+import { useState, useContext } from "react";
 
-const InfoRooms = ({ roomId, description,baseRate, taxes,type, roomAvailable,section, guesCapacity, ...rest }) => {
-    const navigate = useNavigate();
+import { Text, Box, Checkbox, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
+
+import { getRooms } from "../api/db";
+import { DbContext } from "../AuthContext";
+
+const InfoRooms = ({ roomId, description,baseRate, taxes,type, roomAvailable,section, guesCapacity, hotelId, ...rest }) => {
+    
+    const [isRoomAvailable, setRoomAvailable] =  useState(roomAvailable);
+    const { db, setDb } = useContext(DbContext);
+    const rooms = getRooms(db);
+    const getLastRoomsId = () => parseInt(rooms[rooms.length - 1].roomId);
+    
+    const defaultState = {
+        roomId: getLastRoomsId() + 1,
+        description: "",
+        baseRate: "",
+        taxes: "",
+        type: "",
+        roomAvailable: "",
+        section: "",
+        guesCapacity: "",
+        hotelId: hotelId
+      };
+
+      const [rows, setRows] = useState([defaultState]);
+    
+    const handleOnRemove = index => {
+        const copyRows = [...rows];
+        copyRows.splice(index, 1);
+        setRows(copyRows);
+      };
     
     return (
         <>
@@ -25,13 +54,19 @@ const InfoRooms = ({ roomId, description,baseRate, taxes,type, roomAvailable,sec
                 <FormLabel>Tipo de habitacion</FormLabel>
                 <Input  isReadOnly={true} value={type}></Input>
 
-                <Checkbox isChecked={roomAvailable}>La habitacion esta activa?</Checkbox>
+                <Checkbox isChecked={isRoomAvailable}
+               onChange={() => {
+                console.log('test roomAvailable', roomAvailable)
+                setRoomAvailable(isRoomAvailable => !isRoomAvailable);
+                }}>La habitacion esta activa?</Checkbox>
 
                 <FormLabel>Ubicacion</FormLabel>
                 <Input  isReadOnly={true} value={section}></Input>
 
                 <FormLabel>Capacidad</FormLabel>
                 <Input  isReadOnly={true} value={guesCapacity}></Input>
+
+                <Button onClick={() => handleOnRemove(roomId)}>Eliminar</Button>
             </Box>
         </FormControl>
         </>
@@ -39,3 +74,4 @@ const InfoRooms = ({ roomId, description,baseRate, taxes,type, roomAvailable,sec
 };
 
 export default InfoRooms;
+

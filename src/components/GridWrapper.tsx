@@ -21,7 +21,7 @@ function GridWrapper({ children }) {
                 <Header />
             </GridItem>
             <Show above="lg">
-                <GridItem area={"aside"}>
+                <GridItem area={"aside"} p={4} shadow="md" borderWidth="1px">
                     <Aside />
                 </GridItem>
             </Show>

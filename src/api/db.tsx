@@ -25,3 +25,9 @@ export const getRoomById = (db, roomId: string) => {
 
     return room ? room : undefined;
 };
+
+export const getBookingByUserEmail = (db, userEmail: string) => {
+    const booking = db.booking.find((b) => b.email === userEmail);
+
+    return booking ? booking : undefined;
+};

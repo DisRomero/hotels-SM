@@ -8,7 +8,7 @@ const Aside = () => {
         <VStack direction="column">
             <Button
                 colorScheme="teal"
-                variant={pathname === "/admin" ? "outline" : "link"}
+                variant={pathname === "/admin" || "/user"? "outline" : "link"}
             >
                 Hoteles
             </Button>

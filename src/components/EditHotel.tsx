@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 
 import { Grid, GridItem, Text, Button, Center, Box, FormControl, FormLabel, Input, Checkbox} from "@chakra-ui/react";
 import GridWrapper from "./GridWrapper";
-import { getHotelsById, getRoomsByHotelId } from "../api/db";
+import { getHotelsById, getRoomsByHotelId, getRooms } from "../api/db";
 
 import { DbContext } from "../AuthContext";
 import InfoRooms from "./InfoRooms";
@@ -17,7 +17,24 @@ const EditHotel = () => {
     const rooms = getRoomsByHotelId(db, hotelIdOfLS.hotelId);
     const [hotelAvailable, setHotelAvailable] =  useState(hotelIdOfLS.hotelAvailable);
     
-  
+
+    const allRooms = getRooms(db);
+    const getLastRoomsId = () => parseInt(allRooms[allRooms.length - 1].roomId);
+    
+    const handleCreateHabitacion = () => {
+        const newHotel = {
+            hotelId: getLastRoomsId() + 1,
+            hotelName: hotelName,
+            hotelAvailable: false,
+            city: cityName,
+            rooms: [],
+        };
+
+        const newDb = structuredClone(db);
+        newDb.hotels.push(newHotel);
+        setDb(newDb);
+        navigate("/admin");
+    };
 
     return (
         <GridWrapper>
@@ -28,7 +45,7 @@ const EditHotel = () => {
                     </Center>
                 </GridItem>
                 <FormControl isRequired m={2}>
-                    <GridItem>
+                    <GridItem >
                             <Box p={5} shadow="md" borderWidth="1px">
                                 
                                 <FormLabel>Identificador del hotel</FormLabel>
@@ -57,9 +74,21 @@ const EditHotel = () => {
                             key={i}
                             roomId={room.roomId}
                             description={room.description}
+                            baseRate={room.baseRate}
+                            taxes={room.taxes}
+                            type={room.type}
+                            roomAvailable={room.roomAvailable}
+                            section={room.section}
+                            guesCapacity={room.guesCapacity}
+                            hotelId={room.hotelId}
                             />
                         )) : null }
                     </GridItem>
+                    <Button  
+                    onClick={() => {
+                        handleOnAdd
+                        console.log("You clicck Agregar habitacion");}}
+                    >Agregar habitacion</Button>
                 </FormControl>
 
 

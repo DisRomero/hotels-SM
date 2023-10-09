@@ -72,14 +72,14 @@
       "gender": "Female",
       "docType": "CC",
       "docNumber": "1234567890",
-      "email": "user1@mail.com",
+      "email": "usuario1@example.com",
       "phoneNumber": "3112345678",
       "nameEmergencyContact": "firstname lastName",
       "phoneNumberEmergendyContact": "3112345677",
       "roomId": "1"
     },
     {
-      "bookingId": "1",
+      "bookingId": "2",
       "starDate": "01-02-2023",
       "endDate": "10-02-2023",
       "guesCapacity": 2,
@@ -88,37 +88,57 @@
       "gender": "Female",
       "docType": "CC",
       "docNumber": "1234567891",
-      "email": "user2@mail.com",
+      "email": "usuario2@example.com",
       "phoneNumber": "3112345687",
       "nameEmergencyContact": "firstname lastName",
       "phoneNumberEmergendyContact": "3112345666",
-      "roomId": "4"
+      "roomId": "3"
+    },
+    {
+      "bookingId": "3",
+      "starDate": "01-02-2023",
+      "endDate": "10-02-2023",
+      "guesCapacity": 2,
+      "userType": "firstname lastName",
+      "dateBirth": "10-01-1990",
+      "gender": "Female",
+      "docType": "CC",
+      "docNumber": "1234567891",
+      "email": "1",
+      "phoneNumber": "3112345687",
+      "nameEmergencyContact": "firstname lastName",
+      "phoneNumberEmergendyContact": "3112345666",
+      "roomId": "2"
     }
   ],
   "users":[
       {
           "userId": 1,
-          "userType": "Usuario 1",
+          "userType": "admin",
           "userEmail": "usuario1@example.com",
-          "userPass": "123456"
+          "userPass": "123456",
+          "bookingId": "1"
         },
         {
           "userId": 2,
-          "userType": "Usuario 2",
+          "userType": "user",
           "userEmail": "usuario2@example.com",
-          "userPass": "123456"
+          "userPass": "123456",
+          "bookingId": "2"
         },
         {
           "userId": 3,
           "userType": "admin",
           "userEmail": "1",
-          "userPass": "1"
+          "userPass": "1",
+          "bookingId": "3"
         },
         {
           "userId": 1,
           "userType": "user",
           "userEmail": "2",
-          "userPass": "2"
+          "userPass": "2",
+          "bookingId": ""
         }
   ]
 }
