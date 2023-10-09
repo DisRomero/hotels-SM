@@ -1,8 +1,8 @@
 //@vendors
 import { useState, useContext } from "react";
-
 import { Text, Box, Checkbox, FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 
+//@db
 import { getRooms } from "../api/db";
 import { DbContext } from "../AuthContext";
 
@@ -56,7 +56,6 @@ const InfoRooms = ({ roomId, description,baseRate, taxes,type, roomAvailable,sec
 
                 <Checkbox isChecked={isRoomAvailable}
                onChange={() => {
-                console.log('test roomAvailable', roomAvailable)
                 setRoomAvailable(isRoomAvailable => !isRoomAvailable);
                 }}>La habitacion esta activa?</Checkbox>
 

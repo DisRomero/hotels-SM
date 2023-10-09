@@ -1,12 +1,14 @@
 //@vendors
 import { useContext, useState } from "react";
-
 import { Grid, GridItem, Text, Button, Center, Box, FormControl, FormLabel, Input, Checkbox} from "@chakra-ui/react";
-import GridWrapper from "./GridWrapper";
-import { getHotelsById, getRoomsByHotelId, getRooms } from "../api/db";
 
-import { DbContext } from "../AuthContext";
+//@components
+import GridWrapper from "./GridWrapper";
 import InfoRooms from "./InfoRooms";
+
+//@db
+import { getHotelsById, getRoomsByHotelId, getRooms } from "../api/db";
+import { DbContext } from "../AuthContext";
 
 const EditHotel = () => {
     const { db } = useContext(DbContext);
@@ -21,7 +23,7 @@ const EditHotel = () => {
     const allRooms = getRooms(db);
     const getLastRoomsId = () => parseInt(allRooms[allRooms.length - 1].roomId);
     
-    const handleCreateHabitacion = () => {
+    const handleCreateRoom = () => {
         const newHotel = {
             hotelId: getLastRoomsId() + 1,
             hotelName: hotelName,
@@ -85,21 +87,18 @@ const EditHotel = () => {
                         )) : null }
                     </GridItem>
                     <Button  
-                    onClick={() => {
-                        handleOnAdd
-                        console.log("You clicck Agregar habitacion");}}
+                    onClick={() => {}}
                     >Agregar habitacion</Button>
                 </FormControl>
 
 
-                <Button
-                                mt={4}
-                                colorScheme="blue"
-                                type="submit"
-                                onClick={() => {alert("You clicked on the button");}}
-                            >
-                                Guardar hotel
-                            </Button>
+                <Button 
+                mt={4} 
+                colorScheme="blue"
+                type="submit"
+                onClick={() => {}}>
+                    Guardar hotel
+                </Button>
             </Grid>
         </GridWrapper>
     );

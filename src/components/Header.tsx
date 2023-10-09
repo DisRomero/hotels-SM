@@ -1,7 +1,12 @@
+//@vendors
 import { useContext } from "react";
 import { Grid, GridItem, Image, Button, Heading, Show } from "@chakra-ui/react";
-import logo from "../assets/hotelIcon.png";
 import { useNavigate } from "react-router-dom";
+
+//@assets
+import logo from "../assets/hotelIcon.png";
+
+//@db
 import { AuthContext } from "../AuthContext";
 import { removeUserSessionFromLS } from "../api/userAuth";
 
@@ -14,7 +19,7 @@ const Header = () => {
         navigate("/login");
     };
     return (
-        <Grid templateColumns="repeat(10, 2fr)" gap={0} alignItems="center">
+        <Grid templateColumns="repeat(10, 2fr)" gap={0} alignItems="center" backgroundColor="gray.50">
             <Show above="lg">
                 <GridItem colSpan={1}>
                     <Image h="50px" src={logo} />

@@ -1,10 +1,15 @@
+//@vendors
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
 
+//@components
+import GridWrapper from "./GridWrapper";
+
+//@db
 import { getHotels } from "../api/db";
 import { DbContext } from "../AuthContext";
-import GridWrapper from "./GridWrapper";
+
 
 
 const CreateHotel = () => {

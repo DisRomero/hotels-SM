@@ -1,9 +1,13 @@
+//@vendors
 import { useContext } from "react";
-import { Grid, GridItem, Text, Button, Center } from "@chakra-ui/react";
+import { Grid, GridItem, Text, Center } from "@chakra-ui/react";
+
+//@components
 import GridWrapper from "./GridWrapper";
 import InfoHotels from "./InfoHotels";
-import { getHotels, getRoomsByHotelId } from "../api/db";
 
+//@db
+import { getHotels, getRoomsByHotelId } from "../api/db";
 import { DbContext } from "../AuthContext";
 
 const HotelUser = () => {

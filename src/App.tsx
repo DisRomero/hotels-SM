@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import CreateHotel from "./components/CreateHotel";
 import EditHotel from "./components/EditHotel";
 
+//@db
 import { AuthContext, DbContext } from "./AuthContext";
 import { getUserFromLS, storeUserInLS, storeHotelIDInLS } from "./api/userAuth";
 import data from "./components/back-end/data.json";
@@ -34,7 +35,7 @@ function App() {
         <AuthContext.Provider value={{ currentUser, setCurrentSession }}>
             <DbContext.Provider value={{ db, setDb, setCurrentHoteSession }}>
                 <BrowserRouter>
-                    <Routes>
+                    <Routes borderColor="red">
                         <Route path="/" element={<Login />} />
                         <Route path="login" element={<Login />} />
                         <Route

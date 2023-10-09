@@ -1,4 +1,7 @@
+//@vendors
 import { Grid, GridItem, Show } from "@chakra-ui/react";
+
+//@components
 import Header from "./Header";
 import Aside from "./Aside";
 
@@ -21,7 +24,7 @@ function GridWrapper({ children }) {
                 <Header />
             </GridItem>
             <Show above="lg">
-                <GridItem area={"aside"} p={4} shadow="md" borderWidth="1px">
+                <GridItem area={"aside"} p={4} shadow="md" borderWidth="1px" backgroundColor="gray.50">
                     <Aside />
                 </GridItem>
             </Show>

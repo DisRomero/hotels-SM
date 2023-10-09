@@ -109,6 +109,21 @@
       "nameEmergencyContact": "firstname lastName",
       "phoneNumberEmergendyContact": "3112345666",
       "roomId": "2"
+    },  {
+      "bookingId": "4",
+      "starDate": "01-02-2024",
+      "endDate": "10-02-2024",
+      "guesCapacity": 2,
+      "userType": "firstname lastName",
+      "dateBirth": "10-01-1990",
+      "gender": "Female",
+      "docType": "CC",
+      "docNumber": "1234567891",
+      "email": "1",
+      "phoneNumber": "3112345687",
+      "nameEmergencyContact": "firstname lastName",
+      "phoneNumberEmergendyContact": "3112345666",
+      "roomId": "1"
     }
   ],
   "users":[
@@ -131,10 +146,10 @@
           "userType": "admin",
           "userEmail": "1",
           "userPass": "1",
-          "bookingId": "3"
+          "bookingId": ["2", "3"]
         },
         {
-          "userId": 1,
+          "userId": 4,
           "userType": "user",
           "userEmail": "2",
           "userPass": "2",

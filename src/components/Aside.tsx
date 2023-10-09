@@ -1,7 +1,14 @@
+//@vendors
 import { VStack, Button } from "@chakra-ui/react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Aside = () => {
+    const navigate = useNavigate();
+
+    const handleBooking = () => {
+        return navigate("/booking");
+    };
+
     const { pathname } = useLocation();
 
     return (
@@ -15,6 +22,8 @@ const Aside = () => {
             <Button
                 colorScheme="teal"
                 variant={pathname === "/booking" ? "outline" : "link"}
+                onClick={handleBooking}
+
             >
                 Reservas
             </Button>

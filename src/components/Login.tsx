@@ -1,9 +1,11 @@
+//@vendors
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthContext";
-
-import { authenticateUser } from "../api/userAuth";
 import { FormControl, FormLabel, Input, Button,Flex, Box, Heading, InputGroup, InputRightElement } from "@chakra-ui/react";
+
+//@db
+import { AuthContext } from "../AuthContext";
+import { useNavigate } from "react-router-dom";
+import { authenticateUser } from "../api/userAuth";
 
 const Login = () => {
     const Auth = useContext(AuthContext);
@@ -35,7 +37,7 @@ const Login = () => {
     return (
         <>
         <Flex m={6} align="center" justifyContent="center">
-            <Box p={8} maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg">
+            <Box p={8} maxWidth="500px" borderWidth={1} borderRadius={8} boxShadow="lg" backgroundColor="gray.50">
                 <Box textAlign="center">
                 <Heading>Iniciar Sesion</Heading>
                 </Box>

@@ -1,3 +1,4 @@
+//@vendors
 import { Text, Box, Heading, Link } from "@chakra-ui/react";
 
 

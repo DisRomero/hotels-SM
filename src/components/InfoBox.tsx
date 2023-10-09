@@ -1,9 +1,9 @@
+//@vendors
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { Text, Box, Heading, Link } from "@chakra-ui/react";
 
-import { Text, Box, Heading, Link, IconButton } from "@chakra-ui/react";
-import { EditIcon } from '@chakra-ui/icons';
-
+//@db
 import { DbContext } from "../AuthContext";
 import { storeHotelIDInLS } from "../api/userAuth";
 
@@ -23,17 +23,6 @@ const InfoBox = ({ id, title, rooms, ...rest }) => {
         <Box p={5} shadow="md" borderWidth="1px" {...rest}>
             <Heading fontSize="xl">
                 {title}
-
-                <IconButton
-                    isRound={true}
-                    variant='outline'
-                    colorScheme='blue'
-                    icon={<EditIcon />}
-                    m={2}
-                    onClick={() => {
-                        handleSubmit(id);
-                        handleEditHotel();
-                    } } aria-label={""}/>
             </Heading>
             {rooms.map((room, i: number) => (
                 <Text key={i} mt={4}>
